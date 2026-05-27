@@ -1,0 +1,12 @@
+name: short_clip
+version: 1
+description: Simple mobile clip — 4 derivatives.
+derivatives:
+  - kind: metadata
+    depends_on: []
+  - kind: ffmpeg_encode
+    depends_on: [metadata]
+  - kind: mpv
+    depends_on: [ffmpeg_encode]
+  - kind: publish
+    depends_on: [metadata, mpv]

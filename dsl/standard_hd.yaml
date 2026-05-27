@@ -1,0 +1,14 @@
+name: standard_hd
+version: 1
+description: Standard HD pipeline — 5 derivatives, HLS depends on MPV.
+derivatives:
+  - kind: metadata
+    depends_on: []
+  - kind: ffmpeg_encode
+    depends_on: [metadata]
+  - kind: mpv
+    depends_on: [ffmpeg_encode]
+  - kind: hls
+    depends_on: [mpv]
+  - kind: publish
+    depends_on: [metadata, hls]

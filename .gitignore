@@ -1,0 +1,28 @@
+# Local state
+tmp/
+bin/
+
+# Local secrets
+.env
+.env.cloud
+
+# Local sample assets (.gitkeep is allowed)
+samples/*.mp4
+samples/*.mov
+
+# Upstream reference clone (deleted before final commit anyway)
+vendor-reference/
+
+# Internal build / planning artifacts — kept locally, not published
+CLAUDE.md
+DECK.md
+BUILD_REPORT.md
+
+# Customer-branded deliverables and deck workspace — kept locally, not published
+deck/
+
+# Editor / OS noise
+.DS_Store
+.idea/
+.vscode/
+*.swp

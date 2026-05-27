@@ -1,0 +1,36 @@
+name: spherical_chaptered
+description: Spherical 360° video shot in chaptered segments, with stabilization.
+version: 1
+derivatives:
+  - kind: metadata
+    depends_on: []
+  - kind: concat
+    depends_on: [metadata]
+  - kind: custom_encode
+    depends_on: [concat]
+    config:
+      sleep_ms: 3000
+  - kind: stabilize
+    depends_on: [custom_encode]
+  - kind: projection
+    depends_on: [stabilize]
+  - kind: mpv
+    depends_on: [projection]
+  - kind: hls
+    depends_on: [mpv]
+  - kind: edit_proxy
+    depends_on: [projection]
+  - kind: thumbnail
+    depends_on: [projection]
+  - kind: bitrate_low
+    depends_on: [hls]
+  - kind: bitrate_high
+    depends_on: [hls]
+  - kind: publish
+    depends_on:
+      - metadata
+      - hls
+      - edit_proxy
+      - thumbnail
+      - bitrate_low
+      - bitrate_high
